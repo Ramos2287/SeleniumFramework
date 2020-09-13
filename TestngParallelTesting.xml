@@ -2,6 +2,7 @@
 <suite name="testng" parallel="tests" thread-count="2">
 	<test name="testng chrome">
 		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="platform" value="Windows 10"></parameter>
 		<classes>
 			
 			<class name="tests.MyAccountTestGrid" />
