@@ -13,9 +13,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import data.LoadProperties;
 import utilities.Helper;
 
 public class TestBase2 {
+	
+	//sauce configuration
+	public static final String USERNAME= LoadProperties.sauceLabsData.getProperty("username");
+	public static final String ACCESS_KEY= LoadProperties.sauceLabsData.getProperty("accesskey");
+	public static final String sauceURL= "https://" + USERNAME + ":"+ACCESS_KEY +LoadProperties.sauceLabsData.getProperty("seleniumURL");
+
+	
 	public static String BaseURL = "http://demo.nopcommerce.com" ; 
 
 	protected static ThreadLocal<RemoteWebDriver> driver = null ; 
@@ -29,10 +37,10 @@ public class TestBase2 {
 		caps.setCapability("browserName", browser);
 		
 		// Selenium Grid Local
-		driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),caps));
+		//driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),caps));
 		
 		// Run on SauceLabs on Cloud
-		//driver.set(new RemoteWebDriver(new URL(sauceURL),caps));
+		driver.set(new RemoteWebDriver(new URL(sauceURL),caps));
 		
 		getDriver().navigate().to(BaseURL);
 	}
