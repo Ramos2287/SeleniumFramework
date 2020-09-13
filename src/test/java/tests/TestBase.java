@@ -42,7 +42,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
 			driver = new PhantomJSDriver(caps); 
 		}
 
-		//driver.manage().window().maximize();
+		driver.manage().window().maximize();
 		driver.navigate().to("https://demo.nopcommerce.com/");
 		driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 
